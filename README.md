@@ -86,5 +86,82 @@ Upon following the instructions accordingly, to confirm success of the actions, 
 ***NB; The commands should be done via your terminal and under your Downloads folder where you have you key pair saved.***
 
 
+And that's pretty much it. We have successfully launched an instance and connected to it. 
+##
+
+## **HOSTING SIMPLE WEBSITES USING APACHE & NGINGX**
+
+Now that we have successfully launched and connected to the instance, we would now proceed to deoloying a website by configuring both Apache and Nginx web servers.
+
+
+
+#### **LAUNCH USING APACHE**
+Before going ahead with deploying on Apache, it must first be installed and that can be done using the following commands;
+
+``` 
+sudo dnf update -y
+sudo dnf install -y httpd
+```
+After confirming the installation, the next thing to do is start and enable apache and you can do that with the commands below;
+
+```
+sudo systemctl start httpd
+sudo systemctl enable httpd
+```
+It should be up and running now but confirm with `sudo system status httpd`. The text should now say 'enabled' instead of 'disabled' and also 'active'
+
+Now that we've got apache up and running, there's one extra layer of confirmation (this would be used for the final result as well). You want to copy your public IP address of your instance and load it in your browser using http as the URL prefix so it looks something like `http://<your-ec2-public-ip>`. 
+
+You should get a default message like "It works". That confirms you are on the right path. 
+
+### Troubleshooting Tip
+```
+If you encounter errors opening the public IP page in your browser, go back to the security group attached to your instance and confirm that under inbound rules, you have your HTTP with Port range 80 allowed and the source is set to 'anywhere'. It should work fine after
+```
+##
+
 \
-And that's pretty much it. We have successfully launched an instance and connected it.
+The next thing to do now is to replace the default apache page with our own website. 
+
+To do that, run `sudo vim /var/www/html/index.html` and then paste the contents of the index.html file attached to this repo, save and exit. 
+
+What we just did is we edited the default apache page that's stored in var/www/html/ using Vim and replaced it with our own page.
+
+ Now, refresh the public IP address you loaded in your browser earlier and you should see something like this on your screen; 
+
+ ![APACHE SITE DEPLOYED SUCCESSFULLY](images/img6.png)
+
+##
+ ### LAUNCH USING NGINX
+ This process is quite similar to apache but with different commmands. 
+
+Of course, we have to install nginx. Use the follwoing commands to do so;
+```
+sudo dnf update -y
+sudo dnf install -y nginx
+```
+ Nginx should now be successfully installed but before we coontinue, we have to disable apache because it's currently running on our available HTTP port (you'll get an error message if you try to launch nginx without disabling apache). 
+
+ To disable apache, run the following commands;
+
+ ```
+ sudo systemctl stop httpd
+sudo systemctl disable httpd
+```
+Now that it's disabled, we can freely start and enable nginx.
+```
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+Everything should be working perfectly now but as usual, always confirm before proceeding. Use `sudo systemctl status nginx` to confirm. 
+
+##
+**DEPLOYING THE WEBSITE** 
+
+Just like with apache, we would be editing the index.html file using Vim.  [*Attached to this repo is another index.html (index_3.html) file different from the oe=ne we used earlier with Apache just to give this whole process a different feel*]
+
+To edit and replace the files, run `sudo vim /usr/share/nginx/html/index.html` , go back to your browser with the public IP and refresh and you should have this on your screen; 
+
+![NGINX DEPLOYED SUCCESSFULLY](images/img7.png)
+
+And that's all about hosting websites using apache and nginx.

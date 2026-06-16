@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AWS Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #232f3e, #1a73e8);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            padding: 3rem;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        p { font-size: 1.2rem; color: #ccc; margin-bottom: 0.5rem; }
+        .badge {
+            display: inline-block;
+            background: #ff9900;
+            color: #232f3e;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello from AWS EC2</h1>
+        <p>This website is hosted on an Apache web server</p>
+        <p>Running on an Ubuntu EC2 instance</p>
+        <span class="badge">Deployed Successfully</span>
+    </div>
+</body>
+</html>

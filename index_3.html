@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan's Assignment</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #fdf6ee;
+      color: #2c1a0e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid #f0dcc8;
+      background: #c1440e;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff8f3;
+    }
+
+    header .badge {
+      font-size: 0.75rem;
+      color: #c1440e;
+      background: #ffe8d6;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #f0dcc8;
+      border-radius: 12px;
+      padding: 3rem 3.5rem;
+      max-width: 560px;
+      width: 100%;
+      border-top: 4px solid #c1440e;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b07050;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #2c1a0e;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #f0dcc8;
+      margin: 1.5rem 0;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      background: #fff8f3;
+      border: 1px solid #f0dcc8;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .info-row:last-child { margin-bottom: 0; }
+
+    .info-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: #c1440e;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      color: #b07050;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: #2c1a0e;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #fff8f3;
+      border-top: 1px solid #a83a0c;
+      background: #c1440e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo">Dan's Assignment</span>
+    <span class="badge">Live on Nginx</span>
+  </header>
+
+  <main>
+    <div class="card">
+      <p class="eyebrow">EC2 Deployment Practice</p>
+      <h1>Welcome to Dan's Assignment</h1>
+
+      <hr class="divider" />
+
+      <div class="info-row">
+        <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+        <div>
+          <p class="info-label">Web server</p>
+          <p class="info-value">This site is hosted on Nginx</p>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <div>
+          <p class="info-label">Date</p>
+          <p class="info-value" id="today"></p>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <div>
+          <p class="info-label">Owner</p>
+          <p class="info-value">This is Dan's assignment</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Deployed on AWS EC2 &mdash; Nginx
+  </footer>
+
+  <script>
+    const d = new Date();
+    document.getElementById('today').textContent = d.toLocaleDateString('en-GB', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+  </script>
+
+</body>
+</html>
