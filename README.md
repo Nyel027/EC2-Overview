@@ -114,10 +114,11 @@ Now that we've got apache up and running, there's one extra layer of confirmatio
 
 You should get a default message like "It works". That confirms you are on the right path. 
 
+##
 ### Troubleshooting Tip
-```
+
 If you encounter errors opening the public IP page in your browser, go back to the security group attached to your instance and confirm that under inbound rules, you have your HTTP with Port range 80 allowed and the source is set to 'anywhere'. It should work fine after
-```
+
 ##
 
 \
