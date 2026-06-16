@@ -91,18 +91,18 @@ And that's pretty much it. We have successfully launched an instance and connect
 
 ## **HOSTING SIMPLE WEBSITES USING APACHE & NGINGX**
 
-Now that we have successfully launched and connected to the instance, we would now proceed to deoloying a website by configuring both Apache and Nginx web servers.
+Now that we have successfully launched and connected to the instance, we would now proceed to deploying a website by configuring both Apache and Nginx web servers.
 
 
 
 #### **LAUNCH USING APACHE**
-Before going ahead with deploying on Apache, it must first be installed and that can be done using the following commands;
+Before going ahead with deploying on Apache, we need to actually install it first and that can be done using the following commands;
 
 ``` 
 sudo dnf update -y
 sudo dnf install -y httpd
 ```
-After confirming the installation, the next thing to do is start and enable apache and you can do that with the commands below;
+After confirming the installation, the next thing to do is to start and enable apache, and you can do that with the commands below;
 
 ```
 sudo systemctl start httpd
@@ -112,12 +112,12 @@ It should be up and running now but confirm with `sudo system status httpd`. The
 
 Now that we've got apache up and running, there's one extra layer of confirmation (this would be used for the final result as well). You want to copy your public IP address of your instance and load it in your browser using http as the URL prefix so it looks something like `http://<your-ec2-public-ip>`. 
 
-You should get a default message like "It works". That confirms you are on the right path. 
+You should get a default message like **"It works!".**  That confirms you are on the right path. 
 
 ##
 ### Troubleshooting Tip
 
-If you encounter errors opening the public IP page in your browser, go back to the security group attached to your instance and confirm that under inbound rules, you have your HTTP with Port range 80 allowed and the source is set to 'anywhere'. It should work fine after
+If you encounter errors opening the public IP page in your browser, go back to the security group attached to your instance and confirm that under inbound rules, you have your HTTP with Port range 80 allowed and the source is set to 'anywhere'. It should work fine after.
 
 ##
 
@@ -159,7 +159,7 @@ Everything should be working perfectly now but as usual, always confirm before p
 ##
 **DEPLOYING THE WEBSITE** 
 
-Just like with apache, we would be editing the index.html file using Vim.  [*Attached to this repo is another index.html (index_3.html) file different from the oe=ne we used earlier with Apache just to give this whole process a different feel*]
+Just like with apache, we would be editing the index.html file using Vim.  [*Attached to this repo is another index.html (index_3.html) file different from the one we used earlier with Apache just to give this whole process a different feel*]
 
 To edit and replace the files, run `sudo vim /usr/share/nginx/html/index.html` , go back to your browser with the public IP and refresh and you should have this on your screen; 
 
